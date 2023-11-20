@@ -1,0 +1,141 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	background-color: #000000;
+}
+
+.cube{
+	width: 250px;
+	height: 250px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.cube .big{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	animation: cubeanimation 6s linear infinite;
+}
+
+@keyframes cubeanimation{
+	0%{
+		transform: rotateX(-20deg) rotateY(360deg);
+	}
+
+	100%{
+		transform: rotateX(-20deg) rotateY(0deg);
+	}
+}
+
+.cube .big span{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: var(--clr);
+	top: 0;
+	left: 0;
+	transform: rotateY(calc(90deg * var(--var))) translateZ(125px);
+	transition: 0.5s;
+}
+
+.cube .big span.top{
+	transform: rotateX(90deg) translateZ(125px);
+}
+
+.cube:hover .big span{
+	background: transparent;
+	border: 10px solid #ffa20d;
+	filter: drop-shadow(0 0 20px #ffa20d);
+}
+
+.cube2{
+	width: 120px;
+	height: 120px;
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.cube2 .big{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	animation: cubeanimation2 6s linear infinite;
+}
+
+@keyframes cubeanimation2{
+	0%{
+		transform: rotateX(-20deg) rotateY(0deg);
+	}
+
+	100%{
+		transform: rotateX(-20deg) rotateY(360deg);
+	}
+}
+
+.cube2 .big span{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: var(--clr);
+	top: 0;
+	left: 0;
+	transform: rotateY(calc(90deg * var(--var))) translateZ(60px);
+	transition: 0.5s;
+}
+
+.cube2 .big span.top{
+	transform: rotateX(90deg) translateZ(60px);
+}
+
+.cube:hover + .cube2 .big span{
+	background-color: transparent;
+	border: 10px solid #e2e2e2;
+	filter: drop-shadow(0 0 20px #e2e2e2);
+}
+
+
+/*media screen for tablet view;*/
+@media only screen and (max-width: 600px){
+	.cube{
+	width: 180px;
+	height: 180px;
+	}
+
+	.cube .big span{
+		transform: rotateY(calc(90deg * var(--var))) translateZ(90px);
+	}
+
+	.cube .big span.top{
+		transform: rotateX(90deg) translateZ(90px);
+	}
+
+	.cube2{
+	width: 100px;
+	height: 100px;
+	top: 28%;
+	}
+
+	.cube2 .big span{
+		transform: rotateY(calc(90deg * var(--var))) translateZ(50px);
+	}
+
+	.cube2 .big span.top{
+		transform: rotateX(90deg) translateZ(50px);
+	}
+
+}
